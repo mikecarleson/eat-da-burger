@@ -1,0 +1,70 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Welcome to Good Burger</h1>
+        <p>Home of the Good Burger</p>
+        <br>
+        <h2>May I take your order...</h2>
+        <panel>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="newburger">Burgers Here!</label>
+                    <select data-placeholder="" id="newburger" name="burger">
+                        <option value="Nothing Selected">What burger would you like in your belly?</option>
+                        <option value="Hamburger">Hamburger</option>
+                        <option value="Cheeseburger">Cheeseburger</option>
+                        <option value="Double Cheeseburger">Double Cheeseburger</option>
+                        <option value="Triple Cheeseburger">Triple Cheeseburger</option>
+                        <option value="Heart Attack">Heart Attack</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-success" id="addburger">
+                        Order
+                    </button>
+                </div>
+            </form>
+        </panel>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="leftside"><strong>Eat Your Burger!</strong>
+                </div>
+                <div class="panel-body">
+
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}}
+
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}">NOM!</button>
+                        <hr>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="rightside"><strong>Throw Your Trash Away!</strong>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#if devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        <button type="button" class="trashburger btn btn-danger" id="trashbutton" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}">Discard</button>
+                        <hr>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
